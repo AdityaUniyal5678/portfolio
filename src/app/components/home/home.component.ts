@@ -16,6 +16,14 @@ import {
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  projects: Array<any> = [
+    { title: '', description: '', link: '' },
+    { title: '', description: '', link: '' },
+    { title: '', description: '', link: '' },
+    { title: '', description: '', link: '' },
+    { title: '', description: '', link: '' },
+    { title: '', description: '', link: '' },
+  ];
   // Timer variables
   hours: string = '00';
   minutes: string = '00';
