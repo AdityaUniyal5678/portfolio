@@ -33,21 +33,28 @@ export class HomeComponent implements OnInit, OnDestroy {
   private timeoutID: any;
   private readonly INACTIVITY_TIMEOUT = 12000; // 12 seconds
 
+  private timerInterval: any;
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(DOCUMENT) private document: Document
   ) {}
 
   ngOnInit() {
-    // Initialize timer
-    this.startTimerTick();
+    if (isPlatformBrowser(this.platformId)) {
+      // Initialize timer
+      this.startTimerTick();
 
-    // Setup inactivity tracker
-    this.setupInactivityTracker();
+      // Setup inactivity tracker
+      this.setupInactivityTracker();
+    }
   }
 
   ngOnDestroy() {
-    // Clear any ongoing timers or subscriptions
+    // Clear any ongoing timers
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+    }
     if (this.timeoutID) {
       clearTimeout(this.timeoutID);
     }
@@ -55,12 +62,15 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   // Timer Methods
   private startTimerTick(): void {
-    setInterval(() => {
-      const now = new Date();
-      this.hours = this.padZero(now.getHours());
-      this.minutes = this.padZero(now.getMinutes());
-      this.seconds = this.padZero(now.getSeconds());
-    }, 1000);
+    // Only run in browser
+    if (isPlatformBrowser(this.platformId)) {
+      this.timerInterval = setInterval(() => {
+        const now = new Date();
+        this.hours = this.padZero(now.getHours());
+        this.minutes = this.padZero(now.getMinutes());
+        this.seconds = this.padZero(now.getSeconds());
+      }, 1000);
+    }
   }
 
   private padZero(num: number): string {
