@@ -6,6 +6,7 @@ import {
   HostListener,
   Inject,
   PLATFORM_ID,
+  ViewEncapsulation,
 } from '@angular/core';
 
 @Component({
@@ -14,6 +15,7 @@ import {
   imports: [CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent implements OnInit, OnDestroy {
   projects: Array<any> = [

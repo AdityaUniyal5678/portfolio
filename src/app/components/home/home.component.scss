@@ -126,7 +126,7 @@ section {
   border-top: solid 1px var(--c0);
   background: var(--c0);
   overflow: hidden;
-  transition: background 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: 0.6s cubic-bezier(0.86, 0, 0.07, 1);
 }
 #img-bkg {
   z-index: 63;
@@ -140,7 +140,6 @@ section {
   background-size: cover;
   pointer-events: none;
   mix-blend-mode: difference;
-  transform: scalex(-1);
   filter: grayscale(1) contrast(1);
 }
 section .section-content {
@@ -370,11 +369,11 @@ a {
   bottom: 1em;
   left: 2em;
 }
-#logo-codepen {
-  --dim: 30px;
+#logo-github {
+  --dim: 20px;
   z-index: 12;
-  bottom: 1.3em;
-  right: 1.3em;
+  right: 30px;
+  bottom: 20px;
   position: fixed;
   height: var(--dim);
   width: var(--dim);
