@@ -88,17 +88,22 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   // Cursor Tracking
-  @HostListener('document:mousemove', ['$event'])
-  onMouseMove(event: MouseEvent): void {
+  @HostListener('window:mousemove', ['$event']) onMouseMove(
+    event: MouseEvent
+  ): void {
     this.cursorX = event.pageX - 15;
     this.cursorY = event.pageY - 15;
   }
 
   // Menu Hover Effects
+  @HostListener('document:mouseenter', ['$event'])
+  onMouseEnter(event: MouseEvent): void {
+    this.cursorX = event.clientX - 100;
+    this.cursorY = event.clientY - 100;
+  }
+
   onMenuHoverEnter(): void {
-    setTimeout(() => {
-      this.isCursorFaded = true;
-    }, 300);
+    this.isCursorFaded = true;
   }
 
   onMenuHoverLeave(): void {

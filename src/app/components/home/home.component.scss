@@ -431,17 +431,17 @@ a {
 .timer {
   position: fixed;
   z-index: 72;
-  top: 0em;
-  right: 3em;
+  top: 4em;
+  right: 4em;
   letter-spacing: 0em;
   font-family: "Inter", sans-serif;
-  font-weight: 500;
-  font-size: min(max(0.55rem, 0.75rem), 0.75rem);
+  font-weight: 750;
+  font-size: min(max(0.55rem, 0.9rem), 0.9rem);
   color: var(--c11);
   text-transform: uppercase;
   text-align: left;
   z-index: 72;
-  opacity: 1;
+  opacity: 0.45;
 }
 .btn-fullscreen svg path {
   fill: var(--c11);
@@ -460,11 +460,11 @@ a {
 #toggle-theme {
   z-index: 12;
   position: fixed;
-  top: 0.4em;
-  left: 0.4em;
+  top: 3em;
+  left: 2.7em;
   width: 24px;
   height: 24px;
-  transform: scale(0.6);
+  transform: scale(1);
   cursor: pointer;
   & path {
     stroke: var(--c11);
