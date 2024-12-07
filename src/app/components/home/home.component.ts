@@ -19,12 +19,16 @@ import {
 })
 export class HomeComponent implements OnInit, OnDestroy {
   projects: Array<any> = [
-    { title: '', description: '', link: '' },
-    { title: '', description: '', link: '' },
-    { title: '', description: '', link: '' },
-    { title: '', description: '', link: '' },
-    { title: '', description: '', link: '' },
-    { title: '', description: '', link: '' },
+    {
+      title: 'Project 1',
+      description: 'sasa',
+      link: 'https://www.sunflame.com',
+    },
+    { title: 'Project 1', description: '', link: 'https://www.sun.com' },
+    { title: 'Project 1', description: '', link: '' },
+    { title: 'Project 1', description: '', link: '' },
+    { title: 'Project 1', description: '', link: '' },
+    { title: 'Project 1', description: '', link: '' },
   ];
   // Timer variables
   hours: string = '00';

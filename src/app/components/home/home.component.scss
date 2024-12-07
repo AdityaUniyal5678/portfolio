@@ -145,10 +145,10 @@ section .section-content {
   bottom: 5rem;
   left: 2rem;
   right: 2rem;
-  padding: 0.4rem;
+  padding: 0.9rem;
   background: var(--c0);
   border-radius: 0.7rem;
-  transition: background 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: 0.6s cubic-bezier(0.86, 0, 0.07, 1);
 }
 section .section-content .title {
   position: relative;
@@ -251,14 +251,15 @@ section#studio .cards-container {
   overflow-y: scroll;
 }
 section#studio .card {
-  color: var(--c0);
+  color: var(--c6);
   transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
   padding: 1rem;
   border: 1px solid #222;
   box-sizing: border-box;
-  & h2 {
-    text-decoration: underline;
-  }
+  // & h2 {
+  //   text-decoration: underline;
+  //   text-decoration-color: rgb(180, 53, 53);
+  // }
 }
 
 section#studio .overlay {
@@ -308,18 +309,21 @@ a {
 }
 .headline {
   filter: var(--filter-01);
-  letter-spacing: -0.11em;
+  letter-spacing: -0.06em;
   font-family: "Inter", sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 10em;
-  opacity: 0.035;
   text-align: center;
   transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Hides any overflowing text */
+  text-overflow: ellipsis; /* Adds ellipsis (...) if text is too long */
+  width: 100%; /* Ensures the element spans the full width */
 }
 .nav-title {
   z-index: 12;
   position: fixed;
-  font-size: min(max(0.5rem, 1.4rem), 1.4rem);
+  font-size: min(max(0.5rem, 1.6rem), 1.6rem);
   text-transform: uppercase;
 }
 
@@ -353,16 +357,17 @@ a {
 ._1 {
   top: 1.3em;
   left: 1.6em;
-  font-size: 2.1rem;
+  // font-size: 2.1rem;
   display: none;
 }
 ._2 {
+  font-size: 1.6rem;
   top: 1em;
-  right: 2em;
+  right: 1.2em;
 }
 ._3 {
   bottom: 1em;
-  left: 2em;
+  left: 1.2em;
 }
 #logo-github {
   --dim: 20px;
@@ -374,14 +379,15 @@ a {
   position: fixed;
   height: var(--dim);
   width: var(--dim);
-  text-shadow: 0px 0px 30px #ffdd40;
   & svg path {
     transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
     fill: none;
     stroke: var(--c11);
   }
-  &:hover svg path {
-    fill: none;
+  #logo-github:hover svg {
+    opacity: 1;
+    color: #007bff;
+    transform: scale(1.2);
   }
 }
 .font-goth {
@@ -438,13 +444,13 @@ a {
   z-index: 72;
   opacity: 0.45;
 }
-.btn-fullscreen svg path {
-  fill: var(--c11);
-  fill-opacity: 1;
-}
+// .btn-fullscreen svg path {
+//   fill: var(--c11);
+//   fill-opacity: 1;
+// }
 .btn-fullscreen {
-  top: 46%;
-  right: 2.9em;
+  top: 43%;
+  right: 2.7em;
   width: 24px;
   height: 24px;
   position: fixed;
@@ -452,18 +458,28 @@ a {
   transform: scale(1.7);
   cursor: pointer;
 }
+
+.btn-fullscreen:hover svg {
+  opacity: 1;
+  color: #007bff;
+  transform: scale(1.2);
+}
+
 #toggle-theme {
-  z-index: 12;
+  z-index: 998;
   position: fixed;
-  top: 42%;
-  left: 2.7em;
+  top: 44%;
+  left: 3.5em;
   width: 24px;
   height: 24px;
-  transform: scale(1.4);
+  transform: scale(1.9);
   cursor: pointer;
-  & path {
-    stroke: var(--c11);
-  }
+}
+
+#toggle-theme:hover svg {
+  opacity: 1;
+  color: #007bff;
+  transform: scale(1.2);
 }
 footer {
   font-size: min(max(0.5rem, 1rem), 1rem);

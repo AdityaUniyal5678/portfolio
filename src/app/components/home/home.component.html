@@ -1,13 +1,156 @@
 <div class="vignette"></div>
 <div id="img-bkg"></div>
 <div class="activity"></div>
-
 <div
   class="cursor"
   [style.left.px]="cursorX"
   [style.top.px]="cursorY"
   [class.cursor-fade]="isCursorFaded"
 ></div>
+<svg width="0" height="0">
+  <defs id="defs1">
+    <filter id="turbulence-effect">
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="0.001"
+        numOctaves="1"
+        seed="1"
+        result="noise"
+      >
+        <animate
+          attributeName="baseFrequency"
+          values="0.001;0.005;0.001"
+          dur="20s"
+          repeatCount="indefinite"
+        />
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="80">
+        <animate
+          attributeName="scale"
+          values="80; 120; 80"
+          dur="10s"
+          repeatCount="indefinite"
+        />
+      </feDisplacementMap>
+    </filter>
+
+    <filter id="pixelate-effect" x="0" y="0">
+      <feFlood x="4" y="4" height="2" width="2" />
+      <feComposite width="12" height="16" />
+      <feTile x="0" y="0" width="1080" height="1080" result="c" />
+      <feComposite in="SourceGraphic" in2="c" operator="in" />
+      <feMorphology operator="dilate" radius="3" />
+      <feMorphology operator="dilate" radius="1" />
+    </filter>
+
+    <filter id="pixelate-effect-sm" x="0" y="0">
+      <feFlood x="4" y="4" height="1" width="1" />
+      <feComposite width="4" height="4" />
+      <feTile x="0" y="0" width="108" height="108" result="c" />
+      <feComposite in="SourceGraphic" in2="c" operator="in" />
+      <feMorphology operator="dilate" radius="1" />
+    </filter>
+
+    <filter style="color-interpolation-filters: sRGB" id="lines-effect">
+      <feConvolveMatrix
+        in="SourceGraphic"
+        kernelMatrix="0 250 0 250 -1338 250 0 250 0"
+        order="3 3"
+        result="convolve"
+        id="feConvolveMatrix296"
+      />
+      <feBlend
+        in="convolve"
+        in2="SourceGraphic"
+        mode="multiply"
+        result="blend"
+        id="feBlend296"
+      />
+      <feTurbulence
+        type="turbulence"
+        baseFrequency="0.25 0.0"
+        numOctaves="1"
+        seed="6"
+        result="turbulence"
+        id="feTurbulence296"
+      >
+        <animate
+          attributeName="baseFrequency"
+          values="0.23 0.0; 0.1 0.0; 0.25 0.0; 0.2 0.0';"
+          dur="1s"
+          repeatCount="indefinite"
+        />
+      </feTurbulence>
+      <feColorMatrix
+        in="blend"
+        type="luminanceToAlpha"
+        result="colormatrix1"
+        id="feColorMatrix296"
+      />
+      <feComposite
+        in="turbulence"
+        in2="colormatrix1"
+        k1="5.75851"
+        k2="0.835913"
+        k4="0.0853659"
+        operator="arithmetic"
+        result="composite1"
+        id="feComposite296"
+        k3="0"
+      />
+      <feColorMatrix
+        in="composite1"
+        values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 10 -9 "
+        result="colormatrix2"
+        id="feColorMatrix297"
+      />
+      <feGaussianBlur stdDeviation="0.0" result="blur" id="feGaussianBlur297" />
+      <feFlood
+        flood-color="rgb(0,0,0)"
+        flood-opacity="1"
+        result="flood1"
+        id="feFlood297"
+      />
+      <feComposite
+        in="flood1"
+        in2="blur"
+        operator="out"
+        result="composite2"
+        id="feComposite297"
+      />
+      <feFlood
+        flood-color="rgb(255,255,255)"
+        flood-opacity="1"
+        result="flood2"
+        id="feFlood298"
+      />
+      <feComposite
+        in="flood2"
+        in2="blur"
+        operator="in"
+        result="composite3"
+        id="feComposite298"
+      />
+      <feComposite
+        in="composite3"
+        in2="composite2"
+        k2="1"
+        k3="1"
+        operator="arithmetic"
+        result="composite4"
+        id="feComposite299"
+        k1="0"
+        k4="0"
+      />
+      <feComposite
+        in2="SourceGraphic"
+        operator="in"
+        result="composite5"
+        id="feComposite300"
+      />
+    </filter>
+  </defs>
+</svg>
 <nav>
   <h3 class="nav-title _1">
     <b>
@@ -40,7 +183,6 @@
     </b>
   </h3>
 </nav>
-
 <div
   id="toggle-theme"
   (click)="toggleTheme()"
@@ -48,30 +190,19 @@
   (mouseleave)="onMenuHoverLeave()"
 >
   <svg
-    viewBox="0 0 24.00 24.00"
-    fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    transform="rotate(0)"
+    width="16"
+    height="16"
+    fill="currentColor"
+    class="bi bi-arrow-left-right"
+    viewBox="0 0 16 16"
   >
-    <g stroke-width="0"></g>
-    <g
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke="#ffffff"
-      stroke-width="0.384"
-    ></g>
-    <g>
-      <path
-        d="M3.5 13L3.29592 12.0476C2.62895 8.93509 5.00172 6 8.18494 6H19M19 6L16 9M19 6L16 3M20.5 11L20.7041 11.9524C21.3711 15.0649 18.9983 18 15.8151 18H5M5 18L8 15M5 18L8 21"
-        stroke="#000000"
-        stroke-width="2.4"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      ></path>
-    </g>
+    <path
+      fill-rule="evenodd"
+      d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5m14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5"
+    />
   </svg>
 </div>
-
 <div
   class="btn-fullscreen"
   (click)="toggleFullscreen()"
@@ -80,206 +211,47 @@
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    aria-hidden="true"
-    focusable="false"
-    width="1.4em"
-    height="1.4em"
-    style="
-      -ms-transform: rotate(360deg);
-      -webkit-transform: rotate(360deg);
-      transform: rotate(360deg);
-    "
-    preserveAspectRatio="xMidYMid meet"
-    viewBox="0 0 17 17"
+    width="16"
+    height="16"
+    fill="currentColor"
+    class="bi bi-arrows-fullscreen"
+    viewBox="0 0 16 16"
   >
-    <g fill="" fill-rule="evenodd">
-      <path d="M3 5h12v8H3z" />
-      <path d="M3.918 14.938H1v-2.876h1v1.98h1.918v.896z" />
-      <path d="M17 14.938h-2.938v-.896H16v-1.984h1v2.88z" />
-      <path d="M17 5.917h-1v-1.95h-1.943v-.946H17v2.896z" />
-      <path d="M2 5.938H1V3h2.938v.938H2v2z" />
-    </g>
+    <path
+      fill-rule="evenodd"
+      d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707m0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707m-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707"
+    />
   </svg>
 </div>
-
 <section id="hello">
   <div class="section-content">
     <h3 class="headline centered">Aditya Uniyal</h3>
   </div>
 </section>
-
 <section id="studio">
   <div class="section-content">
-    <h2 class="title">STUDIO</h2>
-    <h2 class="subtitle">PROJECTS</h2>
+    <h2 class="title"><b>STUDIO</b></h2>
+    <h2 class="subtitle"><b>PROJECTS</b></h2>
     <div class="cards-container">
       @for (project of projects; track $index; let i=$index) {
       <div class="card">
-        <h2>{{ project.title }}</h2>
-        <p>{{ project.description }}</p>
-        <a href="{{ project.link }}">Link</a>
+        <h2>
+          <b>{{ project.title }}</b>
+        </h2>
+        <p>
+          <b>{{ project.description }}</b>
+        </p>
+        <a href="{{ project.link }}" target="_blank"><b>Project Link</b></a>
       </div>
       }
     </div>
   </div>
 </section>
-
 <section id="contact">
   <div class="section-content">
     <h3 class="headline centered">CONTACT</h3>
   </div>
-
-  <svg width="0" height="0">
-    <defs id="defs1">
-      <filter id="turbulence-effect">
-        <feTurbulence
-          type="fractalNoise"
-          baseFrequency="0.002"
-          numOctaves="1"
-          seed="1"
-          result="noise"
-        >
-          <animate
-            attributeName="baseFrequency"
-            values="0.002;0.01;0.002"
-            dur="20s"
-            repeatCount="indefinite"
-          />
-        </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="80">
-          <animate
-            attributeName="scale"
-            values="80; 120; 80"
-            dur="10s"
-            repeatCount="indefinite"
-          />
-        </feDisplacementMap>
-      </filter>
-
-      <filter id="pixelate-effect" x="0" y="0">
-        <feFlood x="4" y="4" height="2" width="2" />
-        <feComposite width="12" height="16" />
-        <feTile x="0" y="0" width="1080" height="1080" result="c" />
-        <feComposite in="SourceGraphic" in2="c" operator="in" />
-        <feMorphology operator="dilate" radius="3" />
-        <feMorphology operator="dilate" radius="1" />
-      </filter>
-
-      <filter id="pixelate-effect-sm" x="0" y="0">
-        <feFlood x="4" y="4" height="1" width="1" />
-        <feComposite width="4" height="4" />
-        <feTile x="0" y="0" width="108" height="108" result="c" />
-        <feComposite in="SourceGraphic" in2="c" operator="in" />
-        <feMorphology operator="dilate" radius="1" />
-      </filter>
-
-      <filter style="color-interpolation-filters: sRGB" id="lines-effect">
-        <feConvolveMatrix
-          in="SourceGraphic"
-          kernelMatrix="0 250 0 250 -1338 250 0 250 0"
-          order="3 3"
-          result="convolve"
-          id="feConvolveMatrix296"
-        />
-        <feBlend
-          in="convolve"
-          in2="SourceGraphic"
-          mode="multiply"
-          result="blend"
-          id="feBlend296"
-        />
-        <feTurbulence
-          type="turbulence"
-          baseFrequency="0.25 0.0"
-          numOctaves="1"
-          seed="6"
-          result="turbulence"
-          id="feTurbulence296"
-        >
-          <animate
-            attributeName="baseFrequency"
-            values="0.23 0.0; 0.1 0.0; 0.25 0.0; 0.2 0.0';"
-            dur="1s"
-            repeatCount="indefinite"
-          />
-        </feTurbulence>
-        <feColorMatrix
-          in="blend"
-          type="luminanceToAlpha"
-          result="colormatrix1"
-          id="feColorMatrix296"
-        />
-        <feComposite
-          in="turbulence"
-          in2="colormatrix1"
-          k1="5.75851"
-          k2="0.835913"
-          k4="0.0853659"
-          operator="arithmetic"
-          result="composite1"
-          id="feComposite296"
-          k3="0"
-        />
-        <feColorMatrix
-          in="composite1"
-          values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 10 -9 "
-          result="colormatrix2"
-          id="feColorMatrix297"
-        />
-        <feGaussianBlur
-          stdDeviation="0.0"
-          result="blur"
-          id="feGaussianBlur297"
-        />
-        <feFlood
-          flood-color="rgb(0,0,0)"
-          flood-opacity="1"
-          result="flood1"
-          id="feFlood297"
-        />
-        <feComposite
-          in="flood1"
-          in2="blur"
-          operator="out"
-          result="composite2"
-          id="feComposite297"
-        />
-        <feFlood
-          flood-color="rgb(255,255,255)"
-          flood-opacity="1"
-          result="flood2"
-          id="feFlood298"
-        />
-        <feComposite
-          in="flood2"
-          in2="blur"
-          operator="in"
-          result="composite3"
-          id="feComposite298"
-        />
-        <feComposite
-          in="composite3"
-          in2="composite2"
-          k2="1"
-          k3="1"
-          operator="arithmetic"
-          result="composite4"
-          id="feComposite299"
-          k1="0"
-          k4="0"
-        />
-        <feComposite
-          in2="SourceGraphic"
-          operator="in"
-          result="composite5"
-          id="feComposite300"
-        />
-      </filter>
-    </defs>
-  </svg>
 </section>
-
 <div id="logo-github">
   <a
     href="https://github.com/AdityaUniyal5678"
@@ -306,7 +278,6 @@
     </svg>
   </a>
 </div>
-
 <p class="timer">
   <span id="string">
     <span id="h">{{ this.hours }}</span
