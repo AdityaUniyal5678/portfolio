@@ -154,15 +154,10 @@ section#studio .cards-container {
 }
 section#studio .card {
   color: var(--c6);
-  color: var(--c6);
   transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
   padding: 1rem;
   border: 1px solid #222;
   box-sizing: border-box;
-  // & h2 {
-  //   text-decoration: underline;
-  //   text-decoration-color: rgb(180, 53, 53);
-  // }
   // & h2 {
   //   text-decoration: underline;
   //   text-decoration-color: rgb(180, 53, 53);
@@ -186,13 +181,8 @@ section#studio .overlay {
   z-index: 13;
   padding: 6px;
   background-position-y: -0%;
-  background-image: linear-gradient(
-    180deg,
-    transparent 50%,
-    transparent 50%
-  ) !important;
+  background-image: linear-gradient(180deg, transparent 50%) !important;
   transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-  background-size: 0%;
   background-size: auto 190%;
   &:hover {
     padding: 6px;
@@ -217,26 +207,20 @@ a {
 .headline {
   filter: var(--filter-01);
   letter-spacing: -0.06em;
-  letter-spacing: -0.06em;
   font-family: "Inter", sans-serif;
-  font-weight: 400;
   font-weight: 400;
   font-size: 10em;
   text-align: center;
   transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-  white-space: nowrap; /* Prevents text from wrapping */
   overflow: hidden; /* Hides any overflowing text */
   text-overflow: ellipsis; /* Adds ellipsis (...) if text is too long */
-  width: 100%; /* Ensures the element spans the full width */
   white-space: nowrap; /* Prevents text from wrapping */
   overflow: hidden; /* Hides any overflowing text */
-  text-overflow: ellipsis; /* Adds ellipsis (...) if text is too long */
   width: 100%; /* Ensures the element spans the full width */
 }
 .nav-title {
   z-index: 12;
   position: fixed;
-  font-size: min(max(0.5rem, 1.6rem), 1.6rem);
   font-size: min(max(0.5rem, 1.6rem), 1.6rem);
   text-transform: uppercase;
 }
@@ -247,13 +231,8 @@ a {
   overflow: hidden;
   z-index: 13;
   background-position-y: -0%;
-  background-image: linear-gradient(
-    180deg,
-    transparent 50%,
-    transparent 50%
-  ) !important;
+  background-image: linear-gradient(180deg, transparent 50%) !important;
   transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-  background-size: 0%;
   background-size: auto 190%;
   padding: 6px;
   &:hover {
@@ -292,8 +271,8 @@ a {
   transform: scale(2);
   transform-origin: center;
   z-index: 12;
-  right: 40px;
-  bottom: 25px;
+  right: 45px;
+  bottom: 35px;
   position: fixed;
   height: var(--dim);
   width: var(--dim);
@@ -303,11 +282,9 @@ a {
     stroke: var(--c11);
   }
 }
-// #logo-github:hover svg {
-//   opacity: 1;
-//   color: #007bff;
-//   transform: scale(1.2);
-// }
+#logo-github:hover {
+  transform: scale(2.5);
+}
 .font-goth {
   font-family: "Aktura", serif;
 }
@@ -355,8 +332,6 @@ a {
 .btn-fullscreen {
   top: 43%;
   right: 2.7em;
-  top: 43%;
-  right: 2.7em;
   width: 24px;
   height: 24px;
   position: fixed;
@@ -371,23 +346,13 @@ a {
   transform: scale(1.2);
 }
 
-.btn-fullscreen:hover svg {
-  opacity: 1;
-  color: #007bff;
-  transform: scale(1.2);
-}
-
 #toggle-theme {
-  z-index: 998;
   z-index: 998;
   position: fixed;
   top: 44%;
   left: 3.5em;
-  top: 44%;
-  left: 3.5em;
   width: 24px;
   height: 24px;
-  transform: scale(1.9);
   transform: scale(1.9);
   cursor: pointer;
 }
