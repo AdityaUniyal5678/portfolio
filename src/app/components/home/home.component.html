@@ -1,3 +1,7 @@
+<div class="vignette"></div>
+<div id="img-bkg"></div>
+<div class="activity"></div>
+
 <div
   class="cursor"
   [style.left.px]="cursorX"
@@ -275,3 +279,21 @@
     </svg>
   </a>
 </div>
+
+<p class="timer">
+  <span id="string">
+    <span id="h">{{ this.hours }}</span
+    ><span class="h">h</span> <span id="m">{{ minutes }}</span
+    ><span class="m">m</span> <span id="s">{{ seconds }}</span
+    ><span class="s">s</span>
+  </span>
+</p>
+<footer>
+  <h2
+    id="year"
+    (mouseenter)="onMenuHoverEnter()"
+    (mouseleave)="onMenuHoverLeave()"
+  >
+    <b>{{ getCurrentYearInRoman() }} </b>
+  </h2>
+</footer>
