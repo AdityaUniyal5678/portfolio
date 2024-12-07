@@ -303,16 +303,11 @@ a {
     stroke: var(--c11);
   }
 }
-#logo-github:hover svg {
-  opacity: 1;
-  color: #007bff;
-  transform: scale(1.2);
-  #logo-github:hover svg {
-    opacity: 1;
-    color: #007bff;
-    transform: scale(1.2);
-  }
-}
+// #logo-github:hover svg {
+//   opacity: 1;
+//   color: #007bff;
+//   transform: scale(1.2);
+// }
 .font-goth {
   font-family: "Aktura", serif;
 }
