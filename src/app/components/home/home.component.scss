@@ -61,16 +61,7 @@
 ::-webkit-resizer {
   background-color: var(--c9);
 }
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
+
 html {
   scroll-snap-type: mandatory;
   scroll-snap-points-y: repeat(100vh);
@@ -90,32 +81,37 @@ body {
   margin: 0;
   padding: 0;
 }
+.activity {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  // visibility:hidden;
+  z-index: 999;
+  opacity: 1;
+  mix-blend-mode: multiply;
+}
+
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 600px rgba(0, 0, 0, 0.9) inset;
+  z-index: 88;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
 .centered {
   position: absolute;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -40%);
 }
-footer {
-  font-size: min(max(0.5rem, 1rem), 1rem);
-  font-weight: 700;
-  position: absolute;
-  width: 100vw;
-  height: 4em;
-  left: 0;
-  bottom: 0;
-  & #year {
-    position: absolute;
-    text-transform: uppercase;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    font-size: min(max(0.5rem, 1rem), 1rem);
-    text-transform: uppercase;
-    transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-    font-family: Times, serif;
-  }
-}
+
 section {
   scroll-snap-align: start;
   position: relative;
@@ -130,7 +126,7 @@ section {
 }
 #img-bkg {
   z-index: 63;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -213,30 +209,27 @@ section#studio .cards-container {
 
 /* Customize website's scrollbar like Mac OS
    Not supports in Firefox and IE */
+.cards-container::-webkit-scrollbar {
+  background-color: #fff;
+  width: 16px;
+}
 
-/* total width 
-   .cards-container::-webkit-scrollbar {
-   background-color:#fff;
-   width:16px
-   }
-   
-   .cards-container::-webkit-scrollbar-track {
-   width:2px;
-   background-color:#fff
-   }
-   .cards-container::-webkit-scrollbar-track:hover {
-   background-color:#f4f4f4
-   }
-   .cards-container::-webkit-scrollbar-thumb {
-   background-color:#babac0;
-   border-radius:16px;
-   border:5px solid #fff
-   }
-   .cards-container::-webkit-scrollbar-thumb:hover {
-   background-color:#a0a0a5;
-   border:1px solid #f4f4f4
-   }
-   */
+.cards-container::-webkit-scrollbar-track {
+  width: 2px;
+  background-color: #fff;
+}
+.cards-container::-webkit-scrollbar-track:hover {
+  background-color: #f4f4f4;
+}
+.cards-container::-webkit-scrollbar-thumb {
+  background-color: #babac0;
+  border-radius: 16px;
+  border: 5px solid #fff;
+}
+.cards-container::-webkit-scrollbar-thumb:hover {
+  background-color: #a0a0a5;
+  border: 1px solid #f4f4f4;
+}
 
 /* set button(top and bottom of the scrollbar) */
 .cards-container::-webkit-scrollbar-button {
@@ -326,7 +319,7 @@ a {
 .nav-title {
   z-index: 12;
   position: fixed;
-  font-size: min(max(0.5rem, 1rem), 1rem);
+  font-size: min(max(0.5rem, 1.4rem), 1.4rem);
   text-transform: uppercase;
 }
 
@@ -358,8 +351,10 @@ a {
   }
 }
 ._1 {
-  top: 1em;
-  left: 2em;
+  top: 1.3em;
+  left: 1.6em;
+  font-size: 2.1rem;
+  display: none;
 }
 ._2 {
   top: 1em;
@@ -448,73 +443,49 @@ a {
   fill-opacity: 1;
 }
 .btn-fullscreen {
-  top: 0.4em;
-  right: 0.4em;
-  width: 20px;
-  height: 20px;
+  top: 46%;
+  right: 2.9em;
+  width: 24px;
+  height: 24px;
   position: fixed;
   z-index: 3200;
-  transform: scale(0.7);
+  transform: scale(1.7);
   cursor: pointer;
 }
 #toggle-theme {
   z-index: 12;
   position: fixed;
-  top: 3em;
+  top: 42%;
   left: 2.7em;
   width: 24px;
   height: 24px;
-  transform: scale(1);
+  transform: scale(1.4);
   cursor: pointer;
   & path {
     stroke: var(--c11);
   }
 }
-
-.activity {
-  pointer-events: none;
+footer {
+  font-size: min(max(0.5rem, 1rem), 1rem);
+  font-weight: 600;
   position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
   width: 100vw;
-  // visibility:hidden;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAH0lEQVQYV2NkQAX/GZH4/xkYGBhhAmAOSBJEwDkgAQCCrgQEjpMcPgAAAABJRU5ErkJggg==)
-    repeat;
-  /*
-    http://www.patternify.com/
-    */
-  z-index: 999;
-  opacity: 1;
-  mix-blend-mode: multiply;
+  height: 4em;
+  bottom: 0;
 }
-
-.vignette {
+#year {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  box-shadow: 0 0 600px rgba(0, 0, 0, 0.6) inset;
-  z-index: 88;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  display: none;
+  text-transform: uppercase;
+  left: 50%;
+  font-weight: 530; /* Ensure bold font */
+  transform: translate(-50%);
+  font-size: min(max(0.5rem, 2rem), 2rem);
+  transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  font-family: Times, serif;
+  color: rgb(180, 53, 53);
+  letter-spacing: 20%;
 }
-
-.video-vimeo {
-  border-radius: 2rem;
-  width: 300px;
-  padding: 2rem;
-}
-
-#svg-globe {
-  display: none;
-  position: absolute;
-  transform: scale(3);
-  & .svg-globe-path {
-    fill: var(--c11);
-    fill-opacity: 0.05;
-    transition: fill 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-  }
+footer #year {
+  letter-spacing: 0.1em; /* Adjust the value */
+  font-size: 2.4rem;
 }
