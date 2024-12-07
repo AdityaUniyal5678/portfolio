@@ -371,9 +371,11 @@ a {
 }
 #logo-github {
   --dim: 20px;
+  transform: scale(2);
+  transform-origin: center;
   z-index: 12;
-  right: 30px;
-  bottom: 20px;
+  right: 40px;
+  bottom: 25px;
   position: fixed;
   height: var(--dim);
   width: var(--dim);
