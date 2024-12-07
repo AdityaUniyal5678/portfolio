@@ -7,7 +7,9 @@ import {
   Inject,
   PLATFORM_ID,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
+import { CursorHoverService } from '../../services/cursorhover.service';
 
 @Component({
   selector: 'adi-home',
@@ -17,20 +19,19 @@ import {
   styleUrl: './home.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   projects: Array<any> = [
-    { title: '', description: '', link: '' },
-    { title: '', description: '', link: '' },
-    { title: '', description: '', link: '' },
-    { title: '', description: '', link: '' },
-    { title: '', description: '', link: '' },
-    { title: '', description: '', link: '' },
+    {
+      title: 'Project 1',
+      description: 'sasa',
+      link: 'https://www.sunflame.com',
+    },
+    { title: 'Project 1', description: '', link: 'https://www.sun.com' },
+    { title: 'Project 1', description: '', link: '' },
+    { title: 'Project 1', description: '', link: '' },
+    { title: 'Project 1', description: '', link: '' },
+    { title: 'Project 1', description: '', link: '' },
   ];
-  // Timer variables
-  hours: string = '00';
-  minutes: string = '00';
-  seconds: string = '00';
-
   // Cursor variables
   cursorX: number = 0;
   cursorY: number = 0;
@@ -39,75 +40,40 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Theme variables
   currentTheme: 'dark' | 'grey' | 'light' = 'dark';
 
-  // Inactivity timer variables
-  private timeoutID: any;
-  private readonly INACTIVITY_TIMEOUT = 12000; // 12 seconds
-
-  private timerInterval: any;
+  ngOnInit(): void {
+    this.cursorHover.cursorX$.subscribe((x) => (this.cursorX = x));
+    this.cursorHover.cursorY$.subscribe((y) => (this.cursorY = y));
+    this.cursorHover.isCursorFaded$.subscribe(
+      (isFaded) => (this.isCursorFaded = isFaded)
+    );
+  }
 
   constructor(
+    @Inject(CursorHoverService) private cursorHover: CursorHoverService,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(DOCUMENT) private document: Document
   ) {}
 
-  ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      // Initialize timer
-      this.startTimerTick();
-
-      // Setup inactivity tracker
-      this.setupInactivityTracker();
-    }
-  }
-
-  ngOnDestroy() {
-    // Clear any ongoing timers
-    if (this.timerInterval) {
-      clearInterval(this.timerInterval);
-    }
-    if (this.timeoutID) {
-      clearTimeout(this.timeoutID);
-    }
-  }
-
-  // Timer Methods
-  private startTimerTick(): void {
-    // Only run in browser
-    if (isPlatformBrowser(this.platformId)) {
-      this.timerInterval = setInterval(() => {
-        const now = new Date();
-        this.hours = this.padZero(now.getHours());
-        this.minutes = this.padZero(now.getMinutes());
-        this.seconds = this.padZero(now.getSeconds());
-      }, 1000);
-    }
-  }
-
-  private padZero(num: number): string {
-    return num < 10 ? '0' + num : num.toString();
-  }
-
   // Cursor Tracking
-  @HostListener('window:mousemove', ['$event']) onMouseMove(
-    event: MouseEvent
-  ): void {
-    this.cursorX = event.pageX - 15;
-    this.cursorY = event.pageY - 15;
+  @HostListener('document:mousemove')
+  @HostListener('document:mousedown')
+  @HostListener('document:keypress')
+  @HostListener('document:wheel')
+  @HostListener('document:touchmove')
+  @HostListener('window:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent): void {
+    if (event) {
+      this.cursorHover.updateCursorPosition(event);
+    }
   }
 
   // Menu Hover Effects
-  @HostListener('document:mouseenter', ['$event'])
-  onMouseEnter(event: MouseEvent): void {
-    this.cursorX = event.clientX - 100;
-    this.cursorY = event.clientY - 100;
-  }
-
   onMenuHoverEnter(): void {
-    this.isCursorFaded = true;
+    this.cursorHover.setCursorFade(true);
   }
 
   onMenuHoverLeave(): void {
-    this.isCursorFaded = false;
+    this.cursorHover.setCursorFade(false);
   }
 
   // Theme Toggle
@@ -162,85 +128,5 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
       }
     }
-  }
-
-  // Inactivity Tracker
-  private setupInactivityTracker(): void {
-    this.startInactivityTimer();
-  }
-
-  @HostListener('document:mousemove')
-  @HostListener('document:mousedown')
-  @HostListener('document:keypress')
-  @HostListener('document:wheel')
-  @HostListener('document:touchmove')
-  private resetInactivityTimer(): void {
-    clearTimeout(this.timeoutID);
-    this.goActive();
-    this.startInactivityTimer();
-  }
-
-  private startInactivityTimer(): void {
-    this.timeoutID = setTimeout(() => {
-      this.goInactive();
-    }, this.INACTIVITY_TIMEOUT);
-  }
-
-  private goInactive(): void {
-    // You would typically use Angular animations or a service for this
-    if (isPlatformBrowser(this.platformId)) {
-      const activityElement = this.document.querySelector(
-        '.activity'
-      ) as HTMLElement;
-      if (activityElement) {
-        activityElement.style.opacity = '1';
-        activityElement.style.visibility = 'visible';
-      }
-    }
-  }
-
-  private goActive(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const activityElement = this.document.querySelector(
-        '.activity'
-      ) as HTMLElement;
-      if (activityElement) {
-        activityElement.style.opacity = '0';
-        activityElement.style.visibility = 'hidden';
-      }
-    }
-  }
-
-  // Year in Roman Numerals
-  getCurrentYearInRoman(): string {
-    const currentYear = new Date().getFullYear();
-    return this.convertToRomanNumerals(currentYear);
-  }
-
-  private convertToRomanNumerals(num: number): string {
-    const values = [
-      { value: 1000, symbol: 'M' },
-      { value: 900, symbol: 'CM' },
-      { value: 500, symbol: 'D' },
-      { value: 400, symbol: 'CD' },
-      { value: 100, symbol: 'C' },
-      { value: 90, symbol: 'XC' },
-      { value: 50, symbol: 'L' },
-      { value: 40, symbol: 'XL' },
-      { value: 10, symbol: 'X' },
-      { value: 9, symbol: 'IX' },
-      { value: 5, symbol: 'V' },
-      { value: 4, symbol: 'IV' },
-      { value: 1, symbol: 'I' },
-    ];
-
-    let result = '';
-    for (const { value, symbol } of values) {
-      while (num >= value) {
-        result += symbol;
-        num -= value;
-      }
-    }
-    return result;
   }
 }

@@ -1,67 +1,3 @@
-:root {
-  --c0: white;
-  --c1: #f5f5dc;
-  --c2: #dcdcc6;
-  --c3: #c4c4b0;
-  --c4: #abab9a;
-  --c5: #939384;
-  --c6: #7a7a6e;
-  --c7: #626258;
-  --c8: #494942;
-  --c9: #31312c;
-  --c10: #181816;
-  --c11: black;
-  --filter-01: url(#turbulence-effect);
-}
-:root[data-theme="light"] {
-  --c11: white;
-  --c0: black;
-  --filter-01: url(#pixelate-effect);
-}
-
-:root[data-theme="dark"] {
-  --c11: black;
-  --c0: white;
-  --filter-01: url(#turbulence-effect);
-}
-
-:root[data-theme="grey"] {
-  --c11: lightgrey;
-  --c0: #333;
-  --filter-01: url(#lines-effect);
-}
-::-webkit-scrollbar {
-  width: 8px;
-  height: 3px;
-  background-color: var(--c11);
-}
-::-webkit-scrollbar-thumb {
-  height: 50px;
-  background-color: var(--c0);
-  /*
-    border-top: solid 4px var(--c1);
-    border-bottom: solid 4px var(--c1);
-    */
-  border-radius: 0px;
-}
-::-webkit-scrollbar-button {
-  background-color: var(--c8);
-  display: none;
-}
-::-webkit-scrollbar-track {
-  background-color: var(--c8);
-}
-::-webkit-scrollbar-track-piece {
-  background-color: var(--c8);
-}
-
-::-webkit-scrollbar-corner {
-  background-color: var(--c9);
-}
-::-webkit-resizer {
-  background-color: var(--c9);
-}
-
 html {
   scroll-snap-type: mandatory;
   scroll-snap-points-y: repeat(100vh);
@@ -81,30 +17,7 @@ body {
   margin: 0;
   padding: 0;
 }
-.activity {
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  // visibility:hidden;
-  z-index: 999;
-  opacity: 1;
-  mix-blend-mode: multiply;
-}
 
-.vignette {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  box-shadow: 0 0 600px rgba(0, 0, 0, 0.9) inset;
-  z-index: 88;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-}
 .centered {
   position: absolute;
   top: 30%;
@@ -124,20 +37,7 @@ section {
   overflow: hidden;
   transition: 0.6s cubic-bezier(0.86, 0, 0.07, 1);
 }
-#img-bkg {
-  z-index: 63;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: var(--c0) url(https://i.ibb.co/fQDnJdx/image-4.png) no-repeat 50%
-    50% fixed;
-  background-size: cover;
-  pointer-events: none;
-  mix-blend-mode: difference;
-  filter: grayscale(1) contrast(1);
-}
+
 section .section-content {
   display: block;
   position: absolute;
@@ -145,10 +45,10 @@ section .section-content {
   bottom: 5rem;
   left: 2rem;
   right: 2rem;
-  padding: 0.4rem;
+  padding: 0.9rem;
   background: var(--c0);
   border-radius: 0.7rem;
-  transition: background 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: 0.6s cubic-bezier(0.86, 0, 0.07, 1);
 }
 section .section-content .title {
   position: relative;
@@ -251,14 +151,15 @@ section#studio .cards-container {
   overflow-y: scroll;
 }
 section#studio .card {
-  color: var(--c0);
+  color: var(--c6);
   transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
   padding: 1rem;
   border: 1px solid #222;
   box-sizing: border-box;
-  & h2 {
-    text-decoration: underline;
-  }
+  // & h2 {
+  //   text-decoration: underline;
+  //   text-decoration-color: rgb(180, 53, 53);
+  // }
 }
 
 section#studio .overlay {
@@ -308,18 +209,21 @@ a {
 }
 .headline {
   filter: var(--filter-01);
-  letter-spacing: -0.11em;
+  letter-spacing: -0.06em;
   font-family: "Inter", sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 10em;
-  opacity: 0.035;
   text-align: center;
   transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Hides any overflowing text */
+  text-overflow: ellipsis; /* Adds ellipsis (...) if text is too long */
+  width: 100%; /* Ensures the element spans the full width */
 }
 .nav-title {
   z-index: 12;
   position: fixed;
-  font-size: min(max(0.5rem, 1.4rem), 1.4rem);
+  font-size: min(max(0.5rem, 1.6rem), 1.6rem);
   text-transform: uppercase;
 }
 
@@ -353,16 +257,17 @@ a {
 ._1 {
   top: 1.3em;
   left: 1.6em;
-  font-size: 2.1rem;
+  // font-size: 2.1rem;
   display: none;
 }
 ._2 {
+  font-size: 1.6rem;
   top: 1em;
-  right: 2em;
+  right: 1.2em;
 }
 ._3 {
   bottom: 1em;
-  left: 2em;
+  left: 1.2em;
 }
 #logo-github {
   --dim: 20px;
@@ -374,14 +279,15 @@ a {
   position: fixed;
   height: var(--dim);
   width: var(--dim);
-  text-shadow: 0px 0px 30px #ffdd40;
   & svg path {
     transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
     fill: none;
     stroke: var(--c11);
   }
-  &:hover svg path {
-    fill: none;
+  #logo-github:hover svg {
+    opacity: 1;
+    color: #007bff;
+    transform: scale(1.2);
   }
 }
 .font-goth {
@@ -423,28 +329,14 @@ a {
     transform: scale(3) rotate(350deg);
   }
 }
-.timer {
-  position: fixed;
-  z-index: 72;
-  top: 4em;
-  right: 4em;
-  letter-spacing: 0em;
-  font-family: "Inter", sans-serif;
-  font-weight: 750;
-  font-size: min(max(0.55rem, 0.9rem), 0.9rem);
-  color: var(--c11);
-  text-transform: uppercase;
-  text-align: left;
-  z-index: 72;
-  opacity: 0.45;
-}
-.btn-fullscreen svg path {
-  fill: var(--c11);
-  fill-opacity: 1;
-}
+
+// .btn-fullscreen svg path {
+//   fill: var(--c11);
+//   fill-opacity: 1;
+// }
 .btn-fullscreen {
-  top: 46%;
-  right: 2.9em;
+  top: 43%;
+  right: 2.7em;
   width: 24px;
   height: 24px;
   position: fixed;
@@ -452,40 +344,26 @@ a {
   transform: scale(1.7);
   cursor: pointer;
 }
+
+.btn-fullscreen:hover svg {
+  opacity: 1;
+  color: #007bff;
+  transform: scale(1.2);
+}
+
 #toggle-theme {
-  z-index: 12;
+  z-index: 998;
   position: fixed;
-  top: 42%;
-  left: 2.7em;
+  top: 44%;
+  left: 3.5em;
   width: 24px;
   height: 24px;
-  transform: scale(1.4);
+  transform: scale(1.9);
   cursor: pointer;
-  & path {
-    stroke: var(--c11);
-  }
 }
-footer {
-  font-size: min(max(0.5rem, 1rem), 1rem);
-  font-weight: 600;
-  position: fixed;
-  width: 100vw;
-  height: 4em;
-  bottom: 0;
-}
-#year {
-  position: fixed;
-  text-transform: uppercase;
-  left: 50%;
-  font-weight: 530; /* Ensure bold font */
-  transform: translate(-50%);
-  font-size: min(max(0.5rem, 2rem), 2rem);
-  transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-  font-family: Times, serif;
-  color: rgb(180, 53, 53);
-  letter-spacing: 20%;
-}
-footer #year {
-  letter-spacing: 0.1em; /* Adjust the value */
-  font-size: 2.4rem;
+
+#toggle-theme:hover svg {
+  opacity: 1;
+  color: #007bff;
+  transform: scale(1.2);
 }

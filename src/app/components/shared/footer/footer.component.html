@@ -1,0 +1,15 @@
+<div
+  class="cursor"
+  [style.left.px]="cursorX"
+  [style.top.px]="cursorY"
+  [class.cursor-fade]="isCursorFaded"
+></div>
+<footer>
+  <h2
+    id="year"
+    (mouseenter)="onMenuHoverEnter()"
+    (mouseleave)="onMenuHoverLeave()"
+  >
+    <b>{{ getCurrentYearInRoman() }} </b>
+  </h2>
+</footer>

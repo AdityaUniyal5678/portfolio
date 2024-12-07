@@ -1,0 +1,24 @@
+footer {
+  font-size: min(max(0.5rem, 1rem), 1rem);
+  font-weight: 600;
+  position: fixed;
+  width: 100vw;
+  height: 4em;
+  bottom: 0;
+}
+#year {
+  position: fixed;
+  text-transform: uppercase;
+  left: 50%;
+  font-weight: 530; /* Ensure bold font */
+  transform: translate(-50%);
+  font-size: min(max(0.5rem, 2rem), 2rem);
+  transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  font-family: Times, serif;
+  color: rgb(180, 53, 53);
+  letter-spacing: 20%;
+}
+footer #year {
+  letter-spacing: 0.1em; /* Adjust the value */
+  font-size: 2.4rem;
+}
