@@ -302,10 +302,11 @@ a {
     fill: none;
     stroke: var(--c11);
   }
-  #logo-github:hover svg {
-    opacity: 1;
-    color: #007bff;
-    transform: scale(1.2);
+}
+#logo-github:hover svg {
+  opacity: 1;
+  color: #007bff;
+  transform: scale(1.2);
   #logo-github:hover svg {
     opacity: 1;
     color: #007bff;
@@ -374,7 +375,6 @@ a {
   color: #007bff;
   transform: scale(1.2);
 }
-
 
 .btn-fullscreen:hover svg {
   opacity: 1;
