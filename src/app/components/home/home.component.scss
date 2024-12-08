@@ -113,6 +113,8 @@ section {
   overflow: hidden;
   transition: 0.6s cubic-bezier(0.86, 0, 0.07, 1);
 }
+
+// STUDIO SECTION
 section .section-content {
   display: block;
   position: absolute;
@@ -148,6 +150,7 @@ section#studio .section-content {
   background: var(--c11);
   height: auto;
   overflow: hidden;
+  z-index: 5;
 }
 section#studio .section-content .title {
   color: var(--c0);
@@ -158,9 +161,6 @@ section#studio .section-content .subtitle {
   position: relative;
   transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
 }
-/************
-   Portfolio Grid
-   *************/
 section#studio .cards-container {
   width: 100%;
   max-width: 90%;
@@ -171,8 +171,6 @@ section#studio .cards-container {
 .overflow {
   min-height: 100vh;
 }
-/* Customize website's scrollbar like Mac OS
-   Not supports in Firefox and IE */
 .cards-container::-webkit-scrollbar {
   background-color: #fff;
   width: 16px;
@@ -197,7 +195,6 @@ section#studio .cards-container {
 .cards-container::-webkit-scrollbar-button {
   display: none;
 }
-/* div box */
 .cards-container {
   width: 100%;
   max-width: 90%;
@@ -228,4 +225,9 @@ section#studio .overlay {
   grid-gap: 16px;
   grid-auto-rows: 1fr;
   overflow: hidden;
+}
+
+section .headline {
+  background: var(--c0);
+  z-index: 5;
 }

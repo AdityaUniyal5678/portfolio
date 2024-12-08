@@ -2,6 +2,7 @@ footer {
   font-size: min(max(0.5rem, 1rem), 1rem);
   font-weight: 600;
   width: 100vw;
+  z-index: 1;
 }
 #year {
   position: fixed;
