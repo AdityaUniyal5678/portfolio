@@ -17,7 +17,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
 #img-bkg {
   z-index: 63;
   position: fixed;
@@ -66,16 +65,6 @@ section .section-content .title {
   left: 1rem;
   font-family: Arial, sans-serif;
   font-size: 12px;
-  /*
-    letter-spacing: 0em;
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-    /*
-    font-size: min(max(4rem, 8rem), 10rem);
-    font-optical-sizing: auto;
-    line-height:1em;
-    text-align:left;
-    */
   font-style: normal;
   opacity: 1;
   z-index: 22;
@@ -114,14 +103,12 @@ section#studio .cards-container {
 .overflow {
   min-height: 100vh;
 }
-
 /* Customize website's scrollbar like Mac OS
    Not supports in Firefox and IE */
 .cards-container::-webkit-scrollbar {
   background-color: #fff;
   width: 16px;
 }
-
 .cards-container::-webkit-scrollbar-track {
   width: 2px;
   background-color: #fff;
@@ -138,12 +125,10 @@ section#studio .cards-container {
   background-color: #a0a0a5;
   border: 1px solid #f4f4f4;
 }
-
 /* set button(top and bottom of the scrollbar) */
 .cards-container::-webkit-scrollbar-button {
   display: none;
 }
-
 /* div box */
 .cards-container {
   width: 100%;
@@ -169,7 +154,6 @@ section#studio .card {
   //   text-decoration-color: rgb(180, 53, 53);
   // }
 }
-
 section#studio .overlay {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

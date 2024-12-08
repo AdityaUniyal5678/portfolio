@@ -11,4 +11,12 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
   },
+  {
+    path: 'studio',
+    component: HomeComponent,
+  },
+  {
+    path: 'contact',
+    component: HomeComponent,
+  },
 ];
