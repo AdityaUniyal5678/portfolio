@@ -31,6 +31,76 @@ body {
   mix-blend-mode: difference;
   filter: grayscale(1) contrast(1);
 }
+// .btn-more a {
+//   padding-top: 10px;
+//   padding-bottom: 5px;
+//   overflow: hidden;
+//   font-size: 12px;
+//   color: var(--c0);
+//   z-index: 13;
+//   padding: 6px;
+//   background-position-y: -0%;
+//   background-image: linear-gradient(180deg, transparent 50%) !important;
+//   transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+//   background-size: auto 190%;
+//   &:hover {
+//     padding: 6px;
+//     background-position-y: 100%;
+//     color: var(--c11);
+//     background-image: linear-gradient(
+//       180deg,
+//       transparent 50%,
+//       var(--c0) 50%
+//     ) !important;
+//     transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+//     /*
+//        filter: var(--filter-01);
+//        */
+//   }
+// }
+.nav-title {
+  z-index: 12;
+  position: fixed;
+  font-size: min(max(0.5rem, 1.6rem), 1.6rem);
+}
+.nav-title a {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  overflow: hidden;
+  z-index: 13;
+  background-position-y: -0%;
+  background-image: linear-gradient(180deg, transparent 50%) !important;
+  transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  background-size: auto 190%;
+  padding: 6px;
+  &:hover {
+    padding: 5px;
+    background-position-y: 100%;
+    color: var(--c0);
+    background-image: linear-gradient(
+      180deg,
+      transparent 50%,
+      var(--c11) 50%
+    ) !important;
+    transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+}
+._1 {
+  top: 1.3em;
+  left: 1.6em;
+  font-size: 2.1rem;
+  display: none;
+}
+._2 {
+  font-size: 1.9rem;
+  top: 0.7em;
+  right: 0.9em;
+}
+._3 {
+  font-size: 2.1rem;
+  bottom: 0.7em;
+  left: 1em;
+}
 section {
   scroll-snap-align: start;
   position: relative;
@@ -51,10 +121,8 @@ section .section-content {
   left: 2rem;
   right: 2rem;
   padding: 0.9rem;
-  padding: 0.9rem;
   background: var(--c0);
   border-radius: 0.7rem;
-  transition: 0.6s cubic-bezier(0.86, 0, 0.07, 1);
   transition: 0.6s cubic-bezier(0.86, 0, 0.07, 1);
 }
 section .section-content .title {

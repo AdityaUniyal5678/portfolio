@@ -1,3 +1,4 @@
+// UNDERSTAD SERVICE THOROUGHLY
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
@@ -16,7 +17,6 @@ export class CursorHoverService {
   isCursorFaded$ = this.isCursorFadedSubject.asObservable();
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
-
   // Update cursor position
   updateCursorPosition(event: MouseEvent): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -24,18 +24,8 @@ export class CursorHoverService {
       this.cursorYSubject.next(event.pageY - 15);
     }
   }
-
   // Toggle cursor fade
   setCursorFade(isFaded: boolean): void {
     this.isCursorFadedSubject.next(isFaded);
-  }
-
-  // Get current cursor state
-  getCurrentCursorState() {
-    return {
-      x: this.cursorXSubject.value,
-      y: this.cursorYSubject.value,
-      isFaded: this.isCursorFadedSubject.value,
-    };
   }
 }

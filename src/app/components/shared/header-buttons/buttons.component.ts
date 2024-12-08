@@ -21,17 +21,14 @@ export class ButtonsComponent implements OnInit, OnDestroy {
   hours: string = '00';
   minutes: string = '00';
   seconds: string = '00';
-
   private timerInterval: any;
   // Inactivity timer variables
   private timeoutID: any;
   private readonly INACTIVITY_TIMEOUT = 12000; // 12 seconds
-
   // Cursor variables
   cursorX: number = 0;
   cursorY: number = 0;
   isCursorFaded: boolean = false;
-
   // Theme variables
   currentTheme: 'dark' | 'grey' | 'light' = 'dark';
 
@@ -50,6 +47,28 @@ export class ButtonsComponent implements OnInit, OnDestroy {
     }
   }
 
+  constructor(
+    @Inject(CursorHoverService) private cursorHover: CursorHoverService,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
+
+  // Cursor Tracking
+  @HostListener('window:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent): void {
+    if (event) {
+      this.cursorHover.updateCursorPosition(event);
+    }
+  }
+  // Menu Hover Effects
+  onMenuHoverEnter(): void {
+    this.cursorHover.setCursorFade(true);
+  }
+  onMenuHoverLeave(): void {
+    this.cursorHover.setCursorFade(false);
+  }
+
+  // WHOLE TIMER TYPESCRIPT
   ngOnDestroy() {
     // Clear any ongoing timers
     if (this.timerInterval) {
@@ -59,13 +78,6 @@ export class ButtonsComponent implements OnInit, OnDestroy {
       clearTimeout(this.timeoutID);
     }
   }
-
-  constructor(
-    @Inject(CursorHoverService) private cursorHover: CursorHoverService,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    @Inject(DOCUMENT) private document: Document
-  ) {}
-
   private startInactivityTimer(): void {
     this.timeoutID = setTimeout(() => {
       this.goInactive();
@@ -75,7 +87,6 @@ export class ButtonsComponent implements OnInit, OnDestroy {
   private setupInactivityTracker(): void {
     this.startInactivityTimer();
   }
-
   // Timer Methods
   private startTimerTick(): void {
     // Only run in browser
@@ -88,11 +99,9 @@ export class ButtonsComponent implements OnInit, OnDestroy {
       }, 1000);
     }
   }
-
   private padZero(num: number): string {
     return num < 10 ? '0' + num : num.toString();
   }
-
   private goInactive(): void {
     if (isPlatformBrowser(this.platformId)) {
       const activityElement = this.document.querySelector(
@@ -104,7 +113,6 @@ export class ButtonsComponent implements OnInit, OnDestroy {
       }
     }
   }
-
   private goActive(): void {
     if (isPlatformBrowser(this.platformId)) {
       const activityElement = this.document.querySelector(
@@ -115,28 +123,6 @@ export class ButtonsComponent implements OnInit, OnDestroy {
         activityElement.style.visibility = 'hidden';
       }
     }
-  }
-
-  // Cursor Tracking
-  @HostListener('document:mousemove')
-  @HostListener('document:mousedown')
-  @HostListener('document:keypress')
-  @HostListener('document:wheel')
-  @HostListener('document:touchmove')
-  @HostListener('window:mousemove', ['$event'])
-  onMouseMove(event: MouseEvent): void {
-    if (event) {
-      this.cursorHover.updateCursorPosition(event);
-    }
-  }
-
-  // Menu Hover Effects
-  onMenuHoverEnter(): void {
-    this.cursorHover.setCursorFade(true);
-  }
-
-  onMenuHoverLeave(): void {
-    this.cursorHover.setCursorFade(false);
   }
 
   // Theme Toggle

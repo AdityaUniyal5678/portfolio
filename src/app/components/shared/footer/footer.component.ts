@@ -17,33 +17,24 @@ export class FooterComponent {
     @Inject(CursorHoverService) private cursorHover: CursorHoverService
   ) {}
   // Cursor Tracking
-  @HostListener('document:mousemove')
-  @HostListener('document:mousedown')
-  @HostListener('document:keypress')
-  @HostListener('document:wheel')
-  @HostListener('document:touchmove')
   @HostListener('window:mousemove', ['$event'])
   onMouseMove(event: MouseEvent): void {
     if (event) {
       this.cursorHover.updateCursorPosition(event);
     }
   }
-
   // Menu Hover Effects
   onMenuHoverEnter(): void {
     this.cursorHover.setCursorFade(true);
   }
-
   onMenuHoverLeave(): void {
     this.cursorHover.setCursorFade(false);
   }
-
   // Year in Roman Numerals
   getCurrentYearInRoman(): string {
     const currentYear = new Date().getFullYear();
     return this.convertToRomanNumerals(currentYear);
   }
-
   private convertToRomanNumerals(num: number): string {
     const values = [
       { value: 1000, symbol: 'M' },
@@ -60,7 +51,6 @@ export class FooterComponent {
       { value: 4, symbol: 'IV' },
       { value: 1, symbol: 'I' },
     ];
-
     let result = '';
     for (const { value, symbol } of values) {
       while (num >= value) {
