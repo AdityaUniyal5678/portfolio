@@ -61,21 +61,6 @@
 ::-webkit-resizer {
   background-color: var(--c9);
 }
-
-#img-bkg {
-  z-index: 63;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: var(--c0) url(https://i.ibb.co/fQDnJdx/image-4.png) no-repeat 50%
-    50% fixed;
-  background-size: cover;
-  pointer-events: none;
-  mix-blend-mode: difference;
-  filter: grayscale(1) contrast(1);
-}
 .vignette {
   position: fixed;
   top: 0;
@@ -112,4 +97,24 @@
   text-transform: uppercase;
   text-align: left;
   opacity: 0.45;
+}
+.headline {
+  filter: var(--filter-01);
+  letter-spacing: -0.06em;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 10em;
+  text-align: center;
+  transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  overflow: hidden; /* Hides any overflowing text */
+  text-overflow: ellipsis; /* Adds ellipsis (...) if text is too long */
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Hides any overflowing text */
+  width: 100%; /* Ensures the element spans the full width */
+}
+.centered {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -40%);
 }

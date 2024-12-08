@@ -1,5 +1,5 @@
 import { Component, HostListener, Inject } from '@angular/core';
-import { CursorHoverService } from '../../../services/cursorhover.service';
+import { CursorHoverService } from '../../../services/cursorHover/cursorHover.service';
 
 @Component({
   selector: 'adi-footer',

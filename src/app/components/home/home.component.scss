@@ -18,13 +18,20 @@ body {
   padding: 0;
 }
 
-.centered {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -40%);
+#img-bkg {
+  z-index: 63;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--c0) url(https://i.ibb.co/fQDnJdx/image-4.png) no-repeat 50%
+    50% fixed;
+  background-size: cover;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  filter: grayscale(1) contrast(1);
 }
-
 section {
   scroll-snap-align: start;
   position: relative;
@@ -37,7 +44,6 @@ section {
   overflow: hidden;
   transition: 0.6s cubic-bezier(0.86, 0, 0.07, 1);
 }
-
 section .section-content {
   display: block;
   position: absolute;
@@ -170,195 +176,4 @@ section#studio .overlay {
   grid-gap: 16px;
   grid-auto-rows: 1fr;
   overflow: hidden;
-}
-
-.btn-more a {
-  padding-top: 10px;
-  padding-bottom: 5px;
-  overflow: hidden;
-  font-size: 12px;
-  color: var(--c0);
-  z-index: 13;
-  padding: 6px;
-  background-position-y: -0%;
-  background-image: linear-gradient(180deg, transparent 50%) !important;
-  transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-  background-size: auto 190%;
-  &:hover {
-    padding: 6px;
-    background-position-y: 100%;
-    color: var(--c11);
-    background-image: linear-gradient(
-      180deg,
-      transparent 50%,
-      var(--c0) 50%
-    ) !important;
-    transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-    /*
-     filter: var(--filter-01);
-     */
-  }
-}
-
-a {
-  color: var(--c11);
-  text-decoration: none;
-}
-.headline {
-  filter: var(--filter-01);
-  letter-spacing: -0.06em;
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  font-size: 10em;
-  text-align: center;
-  transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-  overflow: hidden; /* Hides any overflowing text */
-  text-overflow: ellipsis; /* Adds ellipsis (...) if text is too long */
-  white-space: nowrap; /* Prevents text from wrapping */
-  overflow: hidden; /* Hides any overflowing text */
-  width: 100%; /* Ensures the element spans the full width */
-}
-.nav-title {
-  z-index: 12;
-  position: fixed;
-  font-size: min(max(0.5rem, 1.6rem), 1.6rem);
-  text-transform: uppercase;
-}
-
-.nav-title a {
-  padding-top: 10px;
-  padding-bottom: 5px;
-  overflow: hidden;
-  z-index: 13;
-  background-position-y: -0%;
-  background-image: linear-gradient(180deg, transparent 50%) !important;
-  transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-  background-size: auto 190%;
-  padding: 6px;
-  &:hover {
-    padding: 6px;
-    background-position-y: 100%;
-    color: var(--c0);
-    background-image: linear-gradient(
-      180deg,
-      transparent 50%,
-      var(--c11) 50%
-    ) !important;
-    transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-  }
-}
-._1 {
-  top: 1.3em;
-  left: 1.6em;
-  // font-size: 2.1rem;
-  // font-size: 2.1rem;
-  display: none;
-}
-._2 {
-  font-size: 1.6rem;
-  font-size: 1.6rem;
-  top: 1em;
-  right: 1.2em;
-  right: 1.2em;
-}
-._3 {
-  bottom: 1em;
-  left: 1.2em;
-  left: 1.2em;
-}
-#logo-github {
-  --dim: 20px;
-  transform: scale(2);
-  transform-origin: center;
-  z-index: 12;
-  right: 45px;
-  bottom: 35px;
-  position: fixed;
-  height: var(--dim);
-  width: var(--dim);
-  & svg path {
-    transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-    fill: none;
-    stroke: var(--c11);
-  }
-}
-#logo-github:hover {
-  transform: scale(2.5);
-}
-.font-goth {
-  font-family: "Aktura", serif;
-}
-.cursor {
-  position: absolute;
-  transition: 0.1s ease;
-  z-index: 30;
-  width: 30px;
-  height: 30px;
-  border: 3px solid var(--c11);
-  background: var(--c0);
-  /*
-    filter: var(--filter-01);
-    */
-  border-radius: 50%;
-  opacity: 1;
-  top: -100px;
-  left: -100px;
-  transform: scale(0.35);
-  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  mix-blend-mode: difference;
-  pointer-events: none;
-}
-.cursor-fade {
-  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  transform: scale(2);
-  border: 1rem solid var(--c0);
-  background: var(--c0);
-  animation: rotate 4s infinite linear;
-  mix-blend-mode: difference;
-}
-@keyframes rotate {
-  0% {
-    transform: scale(3) rotate(0deg);
-  }
-  100% {
-    transform: scale(3) rotate(350deg);
-  }
-}
-
-// .btn-fullscreen svg path {
-//   fill: var(--c11);
-//   fill-opacity: 1;
-// }
-.btn-fullscreen {
-  top: 43%;
-  right: 2.7em;
-  width: 24px;
-  height: 24px;
-  position: fixed;
-  z-index: 3200;
-  transform: scale(1.7);
-  cursor: pointer;
-}
-
-.btn-fullscreen:hover svg {
-  opacity: 1;
-  color: #007bff;
-  transform: scale(1.2);
-}
-
-#toggle-theme {
-  z-index: 998;
-  position: fixed;
-  top: 44%;
-  left: 3.5em;
-  width: 24px;
-  height: 24px;
-  transform: scale(1.9);
-  cursor: pointer;
-}
-
-#toggle-theme:hover svg {
-  opacity: 1;
-  color: #007bff;
-  transform: scale(1.2);
 }

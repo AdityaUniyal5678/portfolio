@@ -1,5 +1,4 @@
 <div class="vignette"></div>
-<div id="img-bkg"></div>
 <div class="activity"></div>
 <svg width="0" height="0">
   <defs id="defs1">
@@ -145,13 +144,6 @@
     </filter>
   </defs>
 </svg>
-<p class="timer">
-  <span id="string">
-    <span id="h">{{ this.hours }}</span
-    ><span class="h">h</span> <span id="m">{{ minutes }}</span
-    ><span class="m">m</span> <span id="s">{{ seconds }}</span
-    ><span class="s">s</span>
-  </span>
-</p>
-<adi-home></adi-home>
+<adi-buttons></adi-buttons>
+<router-outlet></router-outlet>
 <adi-footer></adi-footer>
