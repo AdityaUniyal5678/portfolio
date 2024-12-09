@@ -1,6 +1,7 @@
 <div id="img-bkg"></div>
-<nav>
-  <!-- <h3 class="nav-title _1">
+<div class="content">
+  <nav>
+    <!-- <h3 class="nav-title _1">
     <b>
       <a
         href="hello"
@@ -8,43 +9,44 @@
       >
     </b>
   </h3> -->
-  <h3 class="nav-title _2">
-    <b>
-      <a href="studio">Studio</a>
-    </b>
-  </h3>
-  <h3 class="nav-title _3">
-    <b>
-      <a href="contact">Contact</a>
-    </b>
-  </h3>
-</nav>
-<section id="hello">
-  <div class="section-content">
-    <h3 class="headline centered">Aditya Uniyal</h3>
-  </div>
-</section>
-<section id="studio">
-  <div class="section-content">
-    <h2 class="title"><b>STUDIO</b></h2>
-    <h2 class="subtitle"><b>PROJECTS</b></h2>
-    <div class="cards-container">
-      @for (project of projects; track $index; let i=$index) {
-      <div class="card">
-        <h2>
-          <b>{{ project.title }}</b>
-        </h2>
-        <p>
-          <b>{{ project.description }}</b>
-        </p>
-        <a href="{{ project.link }}" target="_blank"><b>Project Link</b></a>
-      </div>
-      }
+    <h3 class="nav-title _2">
+      <b>
+        <a href="studio">Studio</a>
+      </b>
+    </h3>
+    <h3 class="nav-title _3">
+      <b>
+        <a href="contact">Contact</a>
+      </b>
+    </h3>
+  </nav>
+  <section id="hello">
+    <div class="section-content">
+      <h3 class="headline centered">Aditya Uniyal</h3>
     </div>
-  </div>
-</section>
-<section id="contact">
-  <div class="section-content">
-    <h3 class="headline centered">CONTACT</h3>
-  </div>
-</section>
+  </section>
+  <section id="studio">
+    <div class="section-content">
+      <h2 class="title"><b>STUDIO</b></h2>
+      <h2 class="subtitle"><b>PROJECTS</b></h2>
+      <div class="cards-container">
+        @for (project of projects; track $index; let i=$index) {
+        <div class="card">
+          <h2>
+            <b>{{ project.title }}</b>
+          </h2>
+          <p>
+            <b>{{ project.description }}</b>
+          </p>
+          <a href="{{ project.link }}" target="_blank"><b>Project Link</b></a>
+        </div>
+        }
+      </div>
+    </div>
+  </section>
+  <section id="contact">
+    <div class="section-content">
+      <h3 class="headline centered">CONTACT</h3>
+    </div>
+  </section>
+</div>

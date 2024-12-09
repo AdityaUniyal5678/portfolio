@@ -1,10 +1,10 @@
 #logo-github {
   --dim: 20px;
-  transform: scale(2);
+  transform: scale(2.8);
   transform-origin: center;
   z-index: 12;
-  right: 45px;
-  bottom: 35px;
+  right: 55px;
+  bottom: 40px;
   position: fixed;
   height: var(--dim);
   width: var(--dim);
@@ -15,7 +15,7 @@
   }
 }
 #logo-github:hover {
-  transform: scale(2.5);
+  transform: scale(3.1);
 }
 .cursor {
   position: absolute;

@@ -21,15 +21,12 @@ body {
   z-index: 63;
   position: fixed;
   top: 0;
-  left: 0;
   width: 100vw;
   height: 100vh;
-  background: var(--c0) url(../../assets/images/bkg.jpg) no-repeat fixed;
-  background-size: cover;
+  // background: url(../../assets/images/bkg.jpg) no-repeat fixed;
+  background-color: white;
   pointer-events: none;
   mix-blend-mode: difference;
-  opacity: 0.8;
-  filter: brightness(1.9);
 }
 // .btn-more a {
 //   padding-top: 10px;
@@ -151,12 +148,10 @@ section#studio .section-content {
   z-index: 5;
 }
 section#studio .section-content .title {
-  color: turquoise;
+  font-size: 1.4rem;
 }
 
 section#studio .section-content .subtitle {
-  mix-blend-mode: overlay;
-  color: #fff;
   left: 1rem;
   position: relative;
   transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
