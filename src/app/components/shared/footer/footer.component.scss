@@ -2,7 +2,6 @@ footer {
   font-size: min(max(0.5rem, 1rem), 1rem);
   font-weight: 600;
   width: 100vw;
-  z-index: 1;
 }
 #year {
   position: fixed;
@@ -12,7 +11,6 @@ footer {
   transform: translate(-50%);
   // transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
   font-family: Times, serif;
-  color: rgb(180, 53, 53);
 }
 footer #year {
   letter-spacing: 0.1em; /* Adjust the value */

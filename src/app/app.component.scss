@@ -116,7 +116,7 @@
 }
 // SCSS OF REBOOT.SCSS INTERFERING WITH ANCHOR TAG IF STYLING NOT DECLARED GLOBALLY
 a {
-  color: var(--c6);
+  color: currentColor;
   text-decoration: none;
   font-weight: 800;
 }

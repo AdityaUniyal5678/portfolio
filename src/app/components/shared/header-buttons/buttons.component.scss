@@ -52,14 +52,15 @@
   }
 }
 .btn-fullscreen {
-  top: 43%;
-  right: 2.7em;
+  top: 45%;
+  right: 3%;
   width: 24px;
   height: 24px;
   position: fixed;
   z-index: 3200;
-  transform: scale(1.7);
+  transform: scale(2.2);
   cursor: pointer;
+  color: lavenderblush;
 }
 .btn-fullscreen:hover svg {
   opacity: 1;
@@ -69,15 +70,17 @@
 #toggle-theme {
   z-index: 998;
   position: fixed;
-  top: 44%;
+  top: 46%;
   left: 3.5em;
   width: 24px;
   height: 24px;
-  transform: scale(1.9);
+  transform: scale(2.4);
   cursor: pointer;
+  color: lavenderblush;
 }
 #toggle-theme:hover svg {
   opacity: 1;
   color: #007bff;
   transform: scale(1.2);
 }
+// GIVE BLEND PROPERTIES INDIVIDUALLY TO SEVERAL THINGS(IMAGE BKG SHOULDNT INTERFERE WITH THE COLOUR)

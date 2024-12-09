@@ -24,19 +24,19 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: var(--c0) url(https://i.ibb.co/fQDnJdx/image-4.png) no-repeat 50%
-    50% fixed;
+  background: var(--c0) url(../../assets/images/bkg.jpg) no-repeat fixed;
   background-size: cover;
   pointer-events: none;
   mix-blend-mode: difference;
-  filter: grayscale(1) contrast(1);
+  opacity: 0.8;
+  filter: brightness(1.9);
 }
 // .btn-more a {
 //   padding-top: 10px;
 //   padding-bottom: 5px;
 //   overflow: hidden;
 //   font-size: 12px;
-//   color: var(--c0);
+// color: turquoise;
 //   z-index: 13;
 //   padding: 6px;
 //   background-position-y: -0%;
@@ -76,7 +76,7 @@ body {
   &:hover {
     padding: 5px;
     background-position-y: 100%;
-    color: var(--c0);
+    color: turquoise;
     background-image: linear-gradient(
       180deg,
       transparent 50%,
@@ -147,19 +147,20 @@ section#studio {
   background: var(--c0);
 }
 section#studio .section-content {
-  background: var(--c11);
   height: auto;
-  overflow: hidden;
   z-index: 5;
 }
 section#studio .section-content .title {
-  color: var(--c0);
+  color: turquoise;
 }
+
 section#studio .section-content .subtitle {
-  color: var(--c0);
+  mix-blend-mode: overlay;
+  color: #fff;
   left: 1rem;
   position: relative;
   transition: color 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  z-index: 8888;
 }
 section#studio .cards-container {
   width: 100%;
