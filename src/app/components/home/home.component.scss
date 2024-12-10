@@ -141,16 +141,13 @@ section .section-content .title {
   z-index: 22;
 }
 section#hello .section-content .headline {
-  color: var(--c11);
+  color: lightsteelblue;
   opacity: 1;
 }
 section#studio {
   background: var(--c0);
 }
-section#studio .section-content {
-  height: auto;
-  z-index: 5;
-}
+
 section#studio .section-content .title {
   font-size: 1.4rem;
 }
@@ -214,15 +211,9 @@ section#studio .card {
   padding: 1rem;
   border: 1px solid #222;
   box-sizing: border-box;
+  z-index: 888;
   // & h2 {
   //   text-decoration: underline;
   //   text-decoration-color: rgb(180, 53, 53);
   // }
-}
-section#studio .overlay {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  grid-gap: 16px;
-  grid-auto-rows: 1fr;
-  overflow: hidden;
 }

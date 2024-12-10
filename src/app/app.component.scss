@@ -28,7 +28,11 @@
 :root[data-theme="grey"] {
   --c11: lightgrey;
   --c0: #333;
-  --filter-01: url(#lines-effect);
+}
+:root[data-theme="cyberpunk"] {
+  --c11: #001i11;
+  --c0: #ff00be;
+  --filter-01: url(#digital-distortion);
 }
 ::-webkit-scrollbar {
   width: 8px;
@@ -100,6 +104,7 @@
   left: 50%;
   transform: translate(-50%, -40%);
   width: 93%;
+  z-index: 999;
 }
 // SCSS OF REBOOT.SCSS INTERFERING WITH ANCHOR TAG IF STYLING NOT DECLARED GLOBALLY
 a {

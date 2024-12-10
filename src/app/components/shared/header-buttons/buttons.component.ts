@@ -30,7 +30,7 @@ export class ButtonsComponent implements OnInit, OnDestroy {
   cursorY: number = 0;
   isCursorFaded: boolean = false;
   // Theme variables
-  currentTheme: 'dark' | 'grey' | 'light' = 'dark';
+  currentTheme: 'dark' | 'grey' | 'cyberpunk' = 'dark';
 
   ngOnInit(): void {
     this.cursorHover.cursorX$.subscribe((x) => (this.cursorX = x));
@@ -133,7 +133,7 @@ export class ButtonsComponent implements OnInit, OnDestroy {
           this.currentTheme = 'grey';
           break;
         case 'grey':
-          this.currentTheme = 'light';
+          this.currentTheme = 'cyberpunk';
           break;
         default:
           this.currentTheme = 'dark';
