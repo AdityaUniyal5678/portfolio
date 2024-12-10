@@ -24,7 +24,12 @@ body {
   width: 100vw;
   height: 100vh;
   // background: url(../../assets/images/bkg.jpg) no-repeat fixed;
-  background-color: white;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(232, 203, 129, 1) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
   pointer-events: none;
   mix-blend-mode: difference;
 }
@@ -73,7 +78,7 @@ body {
   &:hover {
     padding: 5px;
     background-position-y: 100%;
-    color: turquoise;
+    color: white;
     background-image: linear-gradient(
       180deg,
       transparent 50%,
@@ -119,7 +124,6 @@ section .section-content {
   bottom: 5rem;
   left: 2rem;
   right: 2rem;
-  padding: 0.9rem;
   background: var(--c0);
   border-radius: 0.7rem;
   transition: 0.6s cubic-bezier(0.86, 0, 0.07, 1);
@@ -221,9 +225,4 @@ section#studio .overlay {
   grid-gap: 16px;
   grid-auto-rows: 1fr;
   overflow: hidden;
-}
-
-section .headline {
-  background: var(--c0);
-  z-index: 5;
 }

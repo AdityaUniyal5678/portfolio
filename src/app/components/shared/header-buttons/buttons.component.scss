@@ -83,4 +83,19 @@
   color: #007bff;
   transform: scale(1.2);
 }
+.timer {
+  position: fixed;
+  z-index: 72;
+  top: 4.5em;
+  right: 5em;
+  letter-spacing: 0.02em;
+  font-weight: 790;
+  font-size: min(max(0.55rem, 0.9rem), 0.9rem);
+  color: white;
+  text-transform: uppercase;
+  text-align: left;
+  opacity: 0.55;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
 // GIVE BLEND PROPERTIES INDIVIDUALLY TO SEVERAL THINGS(IMAGE BKG SHOULDNT INTERFERE WITH THE COLOUR)
