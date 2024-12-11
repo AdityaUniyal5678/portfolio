@@ -47,6 +47,20 @@
   <section id="contact">
     <div class="section-content">
       <h3 class="headline centered">CONTACT</h3>
+      <h2 class="subtitle"><b>My Contacts</b></h2>
+      <div class="cards-container">
+        @for (contact of contacts; track $index; let i=$index) {
+        <div class="card">
+          <h2>
+            <b>{{ contact.title }}</b>
+          </h2>
+          <p>
+            <b>{{ contact.description }}</b>
+          </p>
+          <a href="{{ contact.link }}" target="_blank"><b>Github</b></a>
+        </div>
+        }
+      </div>
     </div>
   </section>
 </div>
